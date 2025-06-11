@@ -1,5 +1,6 @@
 import React from 'react';
 import customers from './memdb.js'
+import "./App.css";
 
 function log(message){console.log(message);}
 
