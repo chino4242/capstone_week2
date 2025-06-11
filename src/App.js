@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import customers from './memdb.js'
 import "./App.css";
 
@@ -6,8 +6,10 @@ function log(message){console.log(message);}
 
 export function App(params) {
   let blankCustomer = { "id": -1, "name": "", "email": "", "password": "" };
-  let formObject = customers[0];
+  const [formObject, setFormObject] = useState (blankCustomer);
+
   let mode = (formObject.id >= 0) ? 'Update' : 'Add';
+  const [selectedId, setSelectedId] = useState(null);
 
   const getCustomers =  function(){
     log("in getCustomers()");
@@ -15,6 +17,8 @@ export function App(params) {
 
   const handleListClick = function(item){
     log("in handleListClick()");
+    setFormObject(item);
+
   }  
 
   const handleInputChange = function (event) {
@@ -48,7 +52,8 @@ export function App(params) {
           <tbody>
             {customers.map(
               (item, index) => {
-                return (<tr key={item.id} 
+                return (<tr key={item.id}
+                className={ (item.id === formObject.id )?'selected': ''}
                 onClick={()=>handleListClick(item)} 
                 >
                   <td>{item.name}</td>
