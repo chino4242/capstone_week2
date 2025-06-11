@@ -1,27 +1,19 @@
-import React, {useState, useEffect } from 'react';
-import {getAll, post, put, deleteById } from '../src/ProjectAssets/memdb';
-import "./App.css";
+import React from 'react';
+import customers from './memdb.js'
 
 function log(message){console.log(message);}
 
 export function App(params) {
   let blankCustomer = { "id": -1, "name": "", "email": "", "password": "" };
-  const [customers, setCustomers] = useState([]);
-  const [formObject, setFormObject] = useState (blankCustomer);
-
+  let formObject = customers[0];
   let mode = (formObject.id >= 0) ? 'Update' : 'Add';
-  useEffect(() => { getCustomers() }, []);
-  const [selectedId, setSelectedId] = useState(null);
 
   const getCustomers =  function(){
     log("in getCustomers()");
-    setCustomers(getAll);
   }
 
   const handleListClick = function(item){
     log("in handleListClick()");
-    setFormObject(item);
-
   }  
 
   const handleInputChange = function (event) {
@@ -30,7 +22,6 @@ export function App(params) {
 
   let onCancelClick = function () {
     log("in onCancelClick()");
-    setFormObject(blankCustomer);
   }
 
   let onDeleteClick = function () {
@@ -56,8 +47,7 @@ export function App(params) {
           <tbody>
             {customers.map(
               (item, index) => {
-                return (<tr key={item.id}
-                className={ (item.id === formObject.id )?'selected': ''}
+                return (<tr key={item.id} 
                 onClick={()=>handleListClick(item)} 
                 >
                   <td>{item.name}</td>
