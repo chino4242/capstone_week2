@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/capstone_week2/static/css/main.68a12d7f.css",
+    "main.js": "/capstone_week2/static/js/main.8f069060.js",
+    "index.html": "/capstone_week2/index.html",
+    "main.68a12d7f.css.map": "/capstone_week2/static/css/main.68a12d7f.css.map",
+    "main.8f069060.js.map": "/capstone_week2/static/js/main.8f069060.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.68a12d7f.css",
+    "static/js/main.8f069060.js"
+  ]
+}
