@@ -20,8 +20,11 @@ export function App(params) {
 
   const handleListClick = function(item){
     log("in handleListClick()");
+    if (item.id === formObject.id) {
+      setFormObject(blankCustomer);
+    } else {
     setFormObject(item);
-
+    }
   }  
 
   const handleInputChange = function (event) {
@@ -49,6 +52,13 @@ export function App(params) {
 
   let onSaveClick = function () {
     log("in onSaveClick()");
+    if (mode === 'Add') {
+      post(formObject);
+    }
+    if (mode === 'Update') {
+      put(formObject.id, formObject);
+    }
+    setFormObject(blankCustomer);
   }
 
   return (
