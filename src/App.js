@@ -82,7 +82,7 @@ export function App(params) {
                 >
                   <td>{item.name}</td>
                   <td>{item.email}</td>
-                  <td>{item.password}</td>
+                  <td>{'•'.repeat(item.password.length)}</td>
                 </tr>);
               }
             )}
@@ -118,7 +118,7 @@ export function App(params) {
             <tr>
               <td className={'label'} >Pass:</td>
               <td><input
-                type="text"
+                type="password"
                 name="password"
                 onChange={(e) => handleInputChange(e)}
                 value={formObject.password}
